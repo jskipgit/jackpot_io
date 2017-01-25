@@ -21,6 +21,15 @@ public class Ticket {
     private ArrayList<Integer> numbers = new ArrayList<Integer>();
     private String ticketFileName = null;
     private String owner;
+    private int matchCount;
+
+    public int getMatchCount() {
+        return matchCount;
+    }
+
+    public void setMatchCount(int matchCount) {
+        this.matchCount = matchCount;
+    }
 
     /**
      * Constructor creates a new ticket with random
@@ -167,6 +176,31 @@ public class Ticket {
     public void setOwner(String owner) {
         this.owner = owner;
     }
+
+    public void checkNumbers(int[] winningNumbers) {
+        matchCount = 0;
+        // do checking here
+        for(int aNumberInThisTicket: this.getNumbers()){
+            for(int i =0; i<winningNumbers.length; i++){
+                if(aNumberInThisTicket == winningNumbers[i]){
+                    // we have a match!
+                    matchCount++;
+                }
+            }
+        }
+    }
+
+    public void checkNumbersSmarter(int[] winningNumbers) {
+        matchCount = 0;
+        // do checking here
+            for(int i =0; i<winningNumbers.length; i++){
+                if(this.getNumbers().contains(winningNumbers[i])){
+                    // we have a match!
+                    matchCount++;
+                }
+            }
+    }
+
 }
 
 

@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * Created by jasonskipper on 1/23/17.
  */
-@WebFilter(filterName = "AuthenticationFilter")
+//@WebFilter(filterName = "AuthenticationFilter")
 public class AuthenticationFilter implements Filter {
     public void destroy() {
     }

@@ -1,8 +1,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false" %>
 <html>
+<head>
+    <title>Lotto Fun</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 <body>
 <h2>Hello World!</h2>
+<c:if test="${success_message !=null}">
+    <div class="alert alert-success">
+        <strong>Success!</strong> <c:out value="${success_message}"/>
+    </div>
+</c:if>
 <a href="/generate">Generate Ticket</a>
 
 <p/>
@@ -13,6 +26,5 @@
     </c:forEach>
 </uL>
 
-<img src="img/login_form.jpg"/>
 </body>
 </html>

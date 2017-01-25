@@ -18,7 +18,27 @@ import java.util.List;
  */
 @WebServlet(name = "TicketServlet", urlPatterns = "/generate")
 public class TicketServlet extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String winningTicket = request.getParameter("winning_ticket");
+        String[] numbersAsStrings = winningTicket.split(" ");
+
+        int[] winningNumbers = new int[numbersAsStrings.length];
+
+        // change strings into ints
+        for(int i=0; i<numbersAsStrings.length; i++){
+            int converted = Integer.parseInt(numbersAsStrings[i]);
+            winningNumbers[i] = converted;
+        }
+
+        // get the ticket list
+        ArrayList<Ticket> myTicketList = (ArrayList<Ticket>) request.getSession().getAttribute("tList");
+        for(Ticket testMe:myTicketList){
+
+            testMe.checkNumbers(winningNumbers);
+        }
+
+        // NOW EACH TICKET KNOWS how many matches it has
 
     }
 
@@ -47,11 +67,16 @@ public class TicketServlet extends HttpServlet {
         // add ticket to list
         myTicketList.add(aTicket);
 
+        // set success message
+        request.setAttribute("success_message", "Congrats! You made new ticket!!!");
+
+
         // send to JSP page to display tickets
         String nextJSP = "/index.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
         dispatcher.forward(request,response);
     }
+
 
     @Override
     public void init() throws ServletException {

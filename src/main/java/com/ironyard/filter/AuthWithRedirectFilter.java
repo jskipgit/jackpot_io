@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by jasonskipper on 1/23/17.
  */
-@WebFilter(filterName = "AuthWithRedirectFilter", urlPatterns = "/*")
+///@WebFilter(filterName = "AuthWithRedirectFilter", urlPatterns = "/*")
 public class AuthWithRedirectFilter implements Filter {
     public void destroy() {
     }
